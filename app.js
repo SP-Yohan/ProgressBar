@@ -7,6 +7,7 @@ const VerticalCircle = document.querySelector(".circle.vertical");
 const VerticalProgress = document.getElementById("vertical");
 const RtlCircles = document.querySelectorAll(".circle.rtl");
 const RtlProgress = document.getElementById("rtl");
+const RtlProgressContainer = document.querySelector(".right-to-left-progress-container");
 
 let currentActive = 1;
 
@@ -95,10 +96,15 @@ function update() {
         VerticalCircle.classList.add("active");
     }
 
+    if (currentActive > 5) {
+        RtlProgressContainer.classList.remove(HIDDEN_CLASS);
+    }
+
     //6단계 이상일 때 RTL Circle Active 전환
     RtlCircles.forEach((rtlCircle, idx) => {
         if (idx + 5 < currentActive) {
             rtlCircle.classList.add("active");
+
         } else {
             rtlCircle.classList.remove("active");
         }

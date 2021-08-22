@@ -176,7 +176,7 @@ h1 {
     border-color: var(--line-border-fill);
 }
 
-.circle.hidden {
+.hidden {
     display: none;
 }
 
