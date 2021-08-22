@@ -120,13 +120,15 @@ h1 {
 }
 
 .right-to-left-progress-container {
-    display: block;
+    display: flex;
     float: right;
     justify-content: space-between;
-    position: relative;
+    position: absolute;
     margin-bottom: 30px;
     max-width: 100%;
     width: 300px;
+    margin-top: -80px;
+    direction: rtl;
 }
 
 .right-to-left-progress-container::before {
@@ -146,6 +148,15 @@ h1 {
 .right-to-left-progress {
     display: block;
     float: right;
+    /* background-color: var(--line-border-fill);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 0%;
+    z-index: -1;
+    transition: .4s ease; */
 }
 
 .circle {
