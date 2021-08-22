@@ -82,6 +82,72 @@ h1 {
     transition: .4s ease;
 }
 
+.vertical-progress-container {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    margin-bottom: 30px;
+    max-width: 100%;
+    width: 350px;
+}
+
+.vertical-progress-container::before {
+    content: '';
+    background-color: var(--line-border-empty);
+    position: absolute;
+    top: -10px;
+    left: auto;
+    transform: translateY(-50%);
+    height: 100%;
+    width: 4px;
+    z-index: -1;
+    transition: .4s ease;
+    margin-right: 23px;
+}
+
+.vertical-progress {
+    background-color: var(--line-border-fill);
+    position: absolute;
+    top: -10px;
+    left: auto;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 0%;
+    display: inline-block;
+    z-index: -1;
+    transition: .4s ease;
+    margin-right: 23px;
+}
+
+.right-to-left-progress-container {
+    display: block;
+    float: right;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 30px;
+    max-width: 100%;
+    width: 300px;
+}
+
+.right-to-left-progress-container::before {
+    content: '';
+    background-color: var(--line-border-empty);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 100%;
+    z-index: -1;
+    transition: .4s ease;
+}
+
+
+.right-to-left-progress {
+    display: block;
+    float: right;
+}
+
 .circle {
     background-color: #fff;
     color: #999;

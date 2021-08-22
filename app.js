@@ -2,6 +2,11 @@ const progress = document.getElementById("progress");
 const prev = document.getElementById("prev");
 const next = document.getElementById("next");
 const circles = document.querySelectorAll(".circle");
+const HorizontalCircles = document.querySelectorAll(".circle.horizontal");
+const VerticalCircle = document.querySelector(".circle.vertical");
+const VerticalProgress = document.getElementById("vertical");
+const RtlCircle = document.querySelector(".circle.rtl");
+const RtlProgress = document.getElementById("rtl");
 
 let currentActive = 1;
 
@@ -51,6 +56,12 @@ function removeHidden() {
         if (idx < currentActive && isHidden) {
             circle.classList.remove(HIDDEN_CLASS);
         }
+
+        //5단계일 때 Vertical circle Active 전환
+        if (currentActive === 5) {
+            VerticalProgress.style.height = "100%"
+            VerticalCircle.classList.add("active");            
+        }
     })
 }
 
@@ -63,12 +74,18 @@ function activeHidden() {
         if (idx >= currentActive && !isHidden) {
             circle.classList.add(HIDDEN_CLASS);
         }
+
+        //4단계일 때 Vertical Circle Active 삭제
+        if (currentActive === 4) {
+            VerticalProgress.style.height = "0%"
+            VerticalCircle.classList.remove("active");            
+        }
     })
 }
 
 //버튼 클릭에 따른 현재 진행상황 업데이트 함수
 function update() {
-    circles.forEach((circle, idx) => {
+    HorizontalCircles.forEach((circle, idx) => {
         //다음 단계로 진행 시 다음단계 써클 활성화
         if (idx < currentActive) {
             circle.classList.add("active");
@@ -78,10 +95,10 @@ function update() {
         }
     });
 
-    const actives = document.querySelectorAll(".active");
+    const actives = document.querySelectorAll(".horizontal.active");
 
     //현재 진행 단계에 맞춰 진행 바 색상 변경
-    progress.style.width = ((actives.length) / (circles.length)) * 100 + "%";
+    progress.style.width = ((actives.length - 1) / (HorizontalCircles.length - 1)) * 100 + "%";
     
 
     //진행 단계에 따라 Prev/Next 버튼 활성화 or 비활성화
