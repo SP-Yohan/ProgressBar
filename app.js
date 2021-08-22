@@ -98,6 +98,8 @@ function update() {
 
     if (currentActive > 5) {
         RtlProgressContainer.classList.remove(HIDDEN_CLASS);
+    } else {
+        RtlProgressContainer.classList.add(HIDDEN_CLASS);
     }
 
     //6단계 이상일 때 RTL Circle Active 전환
