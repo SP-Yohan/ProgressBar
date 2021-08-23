@@ -7,7 +7,12 @@ const VerticalCircle = document.querySelector(".circle.vertical");
 const VerticalProgress = document.getElementById("vertical");
 const RtlCircles = document.querySelectorAll(".circle.rtl");
 const RtlProgress = document.getElementById("rtl");
-const RtlProgressContainer = document.querySelector(".right-to-left-progress-container");
+const RtlProgressContainer = document.querySelector(
+    ".right-to-left-progress-container"
+);
+const VerticalProgressContainer = document.querySelector(
+    ".vertical-progress-container"
+);
 
 let currentActive = 1;
 
@@ -44,9 +49,7 @@ prev.addEventListener("click", () => {
     } else {
         update();
     }
-    
-})
-
+});
 
 //4단계 이상일 때 "Next" 버튼 클릭 시 하나씩 Hidden 제거
 function removeHidden() {
@@ -72,10 +75,11 @@ function activeHidden() {
 
         //4단계일 때 Vertical Circle Active 삭제
         if (currentActive === 4) {
-            VerticalProgress.style.height = "0%"
-            VerticalCircle.classList.remove("active");            
+            VerticalProgress.style.height = "0%";
+            VerticalCircle.classList.remove("active");
+            VerticalProgressContainer.classList.add(HIDDEN_CLASS);
         }
-    })
+    });
 }
 
 //버튼 클릭에 따른 현재 진행상황 업데이트 함수
@@ -84,15 +88,16 @@ function update() {
         //다음 단계로 진행 시 다음단계 써클 활성화
         if (idx < currentActive) {
             circle.classList.add("active");
-        }
-        else {      //이전 단계로 돌아갈 시 현재 단계 써클 비활성화
+        } else {
+            //이전 단계로 돌아갈 시 현재 단계 써클 비활성화
             circle.classList.remove("active");
         }
     });
 
     //5단계일 때 Vertical circle Active 전환
     if (currentActive === 5) {
-        VerticalProgress.style.height = "100%"
+        VerticalProgress.style.height = "100%";
+        VerticalProgressContainer.classList.remove(HIDDEN_CLASS);
         VerticalCircle.classList.add("active");
     }
 
@@ -106,20 +111,19 @@ function update() {
     RtlCircles.forEach((rtlCircle, idx) => {
         if (idx + 5 < currentActive) {
             rtlCircle.classList.add("active");
-
         } else {
             rtlCircle.classList.remove("active");
         }
     });
 
-
     const HorizontalActives = document.querySelectorAll(".horizontal.active");
     //현재 진행 단계에 맞춰 진행 바 색상 변경
-    progress.style.width = ((HorizontalActives.length - 1) / (HorizontalCircles.length - 1)) * 100 + "%";
+    progress.style.width =
+        ((HorizontalActives.length - 1) / (HorizontalCircles.length - 1)) * 100 +
+        "%";
 
     const RtlActives = document.querySelectorAll(".rtl.active");
-    //RtlProgress.style.width = ((RtlActives.length) / (RtlCircles.length)) * 100 + "%";
-    
+    RtlProgress.style.width = (RtlActives.length / RtlCircles.length) * 100 + "%";
 
     //진행 단계에 따라 Prev/Next 버튼 활성화 or 비활성화
     if (currentActive === 1) {

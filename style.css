@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;400&display=swap');
-
 :root {
     --line-border-fill: #9c27b0;
     --line-border-empty: #bdbdbd;
@@ -126,7 +125,7 @@ h1 {
     position: absolute;
     margin-bottom: 30px;
     max-width: 100%;
-    width: 300px;
+    width: 250px;
     margin-top: -80px;
     direction: rtl;
 }
@@ -139,24 +138,20 @@ h1 {
     left: 0;
     transform: translateY(-50%);
     height: 4px;
-    width: 100%;
     z-index: -1;
     transition: .4s ease;
 }
 
-
 .right-to-left-progress {
-    display: block;
-    float: right;
-    /* background-color: var(--line-border-fill);
     position: absolute;
     top: 50%;
-    left: 0;
+    background-color: var(--line-border-fill);
     transform: translateY(-50%);
     height: 4px;
     width: 0%;
     z-index: -1;
-    transition: .4s ease; */
+    transition: .4s ease;
+    margin-right: -50px;
 }
 
 .circle {
@@ -177,7 +172,7 @@ h1 {
 }
 
 .hidden {
-    display: none;
+    visibility: hidden;
 }
 
 .btn {
